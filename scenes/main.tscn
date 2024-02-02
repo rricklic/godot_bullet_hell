@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://jgcrneiab6lh"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_815e5"]
+[ext_resource type="PackedScene" uid="uid://boh0k8er1t8h3" path="res://scenes/bullet_spawner.tscn" id="2_fc8px"]
+[ext_resource type="Texture2D" uid="uid://bnmoc6drhjqm3" path="res://bullet1.png" id="3_moymy"]
+[ext_resource type="Script" path="res://scenes/area2d.gd" id="4_hw68t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udmf1"]
+
+[node name="Main" type="Node2D"]
+position = Vector2(-2, 2)
+script = ExtResource("1_815e5")
+
+[node name="BulletSpawner" parent="." instance=ExtResource("2_fc8px")]
+position = Vector2(538, 318)
+bounding_box = Rect2(-1000, -1000, 2000, 2000)
+bullet_image = ExtResource("3_moymy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_hw68t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(353, 240)
+shape = SubResource("RectangleShape2D_udmf1")
+
+[connection signal="area_entered" from="Area2D" to="BulletSpawner" method="_on_area_2d_area_entered"]

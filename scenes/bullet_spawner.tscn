@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://boh0k8er1t8h3"]
+
+[ext_resource type="Script" path="res://scenes/bullet_spawner.gd" id="1_h2buk"]
+
+[node name="BulletSpawner" type="Node2D"]
+script = ExtResource("1_h2buk")
+
+[node name="Origin" type="Marker2D" parent="."]
+
+[node name="SharedArea" type="Area2D" parent="."]
